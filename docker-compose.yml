@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: iga-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: iga
+    ports:
+      - "3307:3306"
+    volumes:
+      - iga_mysql_data:/var/lib/mysql
+      - ./base_datos/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+volumes:
+  iga_mysql_data:
+
