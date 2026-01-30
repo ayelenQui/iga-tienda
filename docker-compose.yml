@@ -11,6 +11,28 @@ services:
       - iga_mysql_data:/var/lib/mysql
       - ./base_datos/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
+  catalogo_ci:
+    build: ./catalogo_ci
+    container_name: iga-catalogo-ci
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+
+  compras_nest:
+    build: ./compras_nest
+    container_name: iga-compras-nest
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_NAME: iga
+      DB_USER: root
+      DB_PASS: root
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mysql
+
 volumes:
   iga_mysql_data:
 

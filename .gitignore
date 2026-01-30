@@ -5,3 +5,16 @@
 **/logs
 **/dist
 **/build
+# Visual Studio
+.vs/
+# Node / Nest
+**/node_modules/
+
+# PHP / Composer
+**/vendor/
+
+# CI writable
+**/writable/
+
+# Builds
+**/dist/
